@@ -1,0 +1,127 @@
+# RAG Benchmarking Configuration
+
+# Evaluation configuration
+evaluation:
+  # Default evaluation settings
+  default_metrics:
+    - "retrieval"
+    - "generation"
+    - "end_to_end"
+  
+  # Retrieval evaluation settings
+  retrieval:
+    k_values: [1, 3, 5, 10]
+    score_threshold: 0.5
+    timeout: 30
+    
+  # Generation evaluation settings
+  generation:
+    max_length: 500
+    temperature: 0.7
+    timeout: 60
+    
+  # End-to-end evaluation settings
+  end_to_end:
+    overall_weight: 0.4
+    retrieval_weight: 0.3
+    generation_weight: 0.3
+
+# Medical domain configuration
+medical:
+  # Medical-specific settings
+  domain: "medical"
+  language: "chinese"
+  
+  # Medical evaluation focus
+  focus_areas:
+    - "clinical_accuracy"
+    - "patient_safety"
+    - "professionalism"
+    - "guideline_adherence"
+  
+  # Medical data sources
+  data_sources:
+    - "clinical_guidelines"
+    - "medical_literature"
+    - "case_studies"
+    - "textbooks"
+
+# Dataset configuration
+datasets:
+  # Dataset paths
+  data_dir: "./data/datasets"
+  cache_dir: "./data/cache"
+  
+  # Default datasets
+  default_datasets:
+    - "medical_qa_sample"
+    - "clinical_guidelines"
+    - "medical_literature"
+  
+  # Dataset formats
+  supported_formats:
+    - "json"
+    - "jsonl"
+    - "csv"
+    - "parquet"
+
+# Metrics configuration
+metrics:
+  # Retrieval metrics
+  retrieval:
+    - "precision_at_k"
+    - "recall_at_k"
+    - "mrr"
+    - "ndcg"
+    - "latency"
+    
+  # Generation metrics
+  generation:
+    - "relevance"
+    - "faithfulness"
+    - "completeness"
+    - "fluency"
+    - "medical_accuracy"
+    
+  # End-to-end metrics
+  end_to_end:
+    - "overall_score"
+    - "user_satisfaction"
+    - "context_utilization"
+    - "clinical_safety"
+
+# Reporting configuration
+reporting:
+  # Output settings
+  output_dir: "./data/results"
+  formats:
+    - "html"
+    - "json"
+    - "csv"
+    
+  # Visualization settings
+  visualization:
+    charts: true
+    interactive: true
+    export_plots: true
+    
+  # Report sections
+  sections:
+    - "executive_summary"
+    - "detailed_metrics"
+    - "comparative_analysis"
+    - "recommendations"
+
+# Performance configuration
+performance:
+  # Concurrency settings
+  max_concurrent_evaluations: 5
+  batch_size: 10
+  
+  # Caching settings
+  enable_caching: true
+  cache_ttl: 3600
+  
+  # Resource limits
+  memory_limit: "4GB"
+  timeout: 300
